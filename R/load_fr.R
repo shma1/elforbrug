@@ -19,6 +19,7 @@
 #' @import RCurl
 #' @import rvest
 #' @import lubridate
+#' @import varhandle
 #' @importFrom magrittr "%>%"
 #'
 #' @export fr_load_dw

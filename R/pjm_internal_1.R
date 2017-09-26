@@ -15,7 +15,7 @@ pjm_internal1 <- function(ht,area){
     x <- y+1
   }
   m <- data.frame(m, stringsAsFactors = F)
-  names(m) <-  m[1,] %>% unfactor() %>%  lubridate::mdy()
+  names(m) <-  m[1,] %>% varhandle::unfactor() %>%  lubridate::mdy()
   m <- m[-c(1,2,15),] %>% mutate_all(.funs = as.numeric)
 
   m$HS <- str_pad(0:23,2,pad = "0")
