@@ -53,12 +53,12 @@ fr_load_dw  <-  function (dag,hour.freq=T){
   if (hour.freq==T){
   y <- dplyr::group_by(y,date(X), hour(X)) %>% dplyr::summarise(L=mean(L, na.rm = T)) %>% data.frame()
 
-  y$X <- paste(y$date.X., stringr::str_pad(y$hour.X.,2,pad="0")) %>% lubridate::ymd_h(tz = "CET")
-  y=y[,c("X","L")]
-  names(y)=c("Hours_Starting" ,"Load")
+  y$X <- paste(y$date.X., stringr::str_pad(y$hour.X.,2,pad="0")) %>% lubridate::ymd_h(tz = "CET") %>% format("%Y-%m-%d %H:%M CET")
+  y <- y[,c("X","L")]
+  names(y) <- c("Hours_Starting" ,"Load")
   return(y)
   } else {
-    names(y)=c("Hours_Starting" ,"Load")
+    names(y) <- c("Hours_Starting" ,"Load")
     data.frame(y)%>%return()
   }
 
